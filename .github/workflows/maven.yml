@@ -58,3 +58,18 @@ jobs:
       with:
         directory: spring-boot-docker 
         token: ${{ secrets.GITHUB_TOKEN }}
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build Docker image
+        run: | 
+          docker build -t nogamoto/work:latest
+      - uses: ttskch/render-deproy@v1.0.0
+        with:
+          api-key: ${{ sercrets.rnd_pfqMm1RkLyhTqDklmeu9Py9x787K }}
+          service-id: ${{ secrets.srv-d3ibjfs9c44c73al6cqg }}
+          interval: 20
+          timeout: 300
