@@ -14,9 +14,6 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# ワークフローレベルでパーミッションをすべて無効化
-permissions: {}
-
 # デフォルトシェルでパイプエラーを有効化
 defaults:
   run:
@@ -34,7 +31,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
-      contents: read
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
