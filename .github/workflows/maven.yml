@@ -43,7 +43,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-         - name: Run actionlint
     - name: Run actionlint
       run: |
         set -x
