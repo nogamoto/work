@@ -30,7 +30,6 @@ jobs:
 
     runs-on: ubuntu-latest
     timeout-minutes: 5
-    permissions:
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
