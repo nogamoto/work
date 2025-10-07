@@ -47,7 +47,7 @@ jobs:
       run: |
         set -x
          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:1.7.7
-     - name: Debug file structure
+    - name: Debug file structure
       run: ls -R
     - name: Build with Maven
       run: mvn -B package --file /work/spring-boot-docker/pom.xml -X
