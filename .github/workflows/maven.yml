@@ -47,9 +47,8 @@ jobs:
       run: |
         set -x
          docker run --rm -v "$(pwd):$(pwd)" -w "$(pwd)" rhysd/actionlint:1.7.7
-    - name: Debug file structure
-      run: ls -R
     - name: Build with Maven
+      working-directory: spring-boot-docker
       run: mvn -B package --file /work/spring-boot-docker/pom.xml -X
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
