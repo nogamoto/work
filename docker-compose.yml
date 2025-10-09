@@ -1,11 +1,5 @@
 services:
-    app:
-      image: sb-app  # 使用するDockerイメージの名前
-      build:
-        context: spring-boot-docker/  # Dockerfile のあるディレクトリを指定
-        dockerfile: Dockerfile  # ビルドに使うDockerfileのパス
-      ports:
-        - "8081:8080"  # ホストの8081ポートをコンテナの8080ポートにマッピング
+
     db:
       image: mysql:latest
       ports:
@@ -19,6 +13,23 @@ services:
         MYSQL_USER: user
         MYSQL_PASSWORD: pass
 
+      healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "user", "-p${MYSQL_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s # サービスの起動を待つ時間
+
+    app:
+      image: sb-app  # 使用するDockerイメージの名前
+      build:
+        context: spring-boot-docker/  # Dockerfile のあるディレクトリを指定
+        dockerfile: Dockerfile  # ビルドに使うDockerfileのパス
+      ports:
+        - "8081:8080"  # ホストの8081ポートをコンテナの8080ポートにマッピング
+      depends_on:
+      db:
+        condition: service_healthy # DBのヘルスチェック成功後に起動する
 
 volumes:
   db_data:
