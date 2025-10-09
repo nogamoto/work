@@ -11,5 +11,8 @@
   RUN mvn clean package -DskipTests
   # ホットリロードを有効にする環境変数を設定
   ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
+  # DB起動まで待機
+  COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
+  RUN chmod +x /usr/local/bin/wait-for-it.sh
   # アプリケーションの起動
-  ENTRYPOINT ["java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar", "--spring.devtools.restart.enabled=true"]
+  CMD ["wait-for-it.sh", "db:3306", "--timeout=60", "--","java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar", "--spring.devtools.restart.enabled=true"]
