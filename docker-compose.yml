@@ -17,8 +17,7 @@ services:
     app:
       image: sb-app  # 使用するDockerイメージの名前
       depends_on:
-        db:
-          condition: service_healthy
+        - db
       build:
         context: spring-boot-docker/  # Dockerfile のあるディレクトリを指定
         dockerfile: Dockerfile  # ビルドに使うDockerfileのパス
