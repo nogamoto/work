@@ -11,7 +11,7 @@
   RUN mvn clean package -DskipTests
   # ホットリロードを有効にする環境変数を設定
   ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
-  # DB起動まで待機
+  # DB起動まで待機用script
   COPY wait-for-it.sh /usr/local/bin/wait-for-it.sh
   RUN chmod +x /usr/local/bin/wait-for-it.sh
   # アプリケーションの起動
