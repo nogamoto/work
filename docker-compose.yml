@@ -13,20 +13,11 @@ services:
         MYSQL_DATABASE: test_database
         MYSQL_USER: user
         MYSQL_PASSWORD: pass
-      healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$MYSQL_ROOT_PASSWORD"]
-        interval: 30s
-        timeout: 5s
-        retries: 6
-        start_period: 30s
 
 
 
     app:
       image: sb-app  # 使用するDockerイメージの名前
-      depends_on:
-        db:
-          condition: service_healthy
       build:
         context: spring-boot-docker/  # Dockerfile のあるディレクトリを指定
         dockerfile: Dockerfile  # ビルドに使うDockerfileのパス

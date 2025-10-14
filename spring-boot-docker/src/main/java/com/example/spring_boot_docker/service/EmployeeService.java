@@ -25,7 +25,24 @@ public EmployeeDto findEmployee(Long Id) {
     return employeeMapper.ToDto(employee);
 }
 
+public void deleteEmployee(Long Id){
+    employeeRepository.delete(employeeMapper.ToEntity(findEmployee(Id)));
+}
 
+public void updateEmployee(Long Id,Employee employee){
+    Employee employee2 =new Employee(
+            employee.Id,
+            employee.getName(),
+            employee.getEge(),
+            employee.getSex(),
+            employee.getAdress1(),
+            employee.getAdress2(),
+            employee.getHobby(),
+            employee.getIntro(),
+            employee.getImage()
+    )
+    employeeRepository.save();
+}
 
 
 }
