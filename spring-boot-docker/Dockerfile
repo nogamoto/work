@@ -12,4 +12,4 @@
   # ホットリロードを有効にする環境変数を設定
   ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
   # アプリケーションの起動
-  CMD ["wait-for-it.sh", "db:3306", "--timeout=60", "--","java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar", "--spring.devtools.restart.enabled=true"]
+  CMD ["java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar", "--spring.devtools.restart.enabled=true"]
