@@ -1,5 +1,7 @@
 package com.example.spring_boot_docker.service;
 
+import java.sql.Blob;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,19 +31,19 @@ public void deleteEmployee(Long Id){
     employeeRepository.delete(employeeMapper.ToEntity(findEmployee(Id)));
 }
 
-public void updateEmployee(Long Id,Employee employee){
-    Employee employee2 =new Employee(
-            employee.Id,
-            employee.getName(),
-            employee.getEge(),
-            employee.getSex(),
-            employee.getAdress1(),
-            employee.getAdress2(),
-            employee.getHobby(),
-            employee.getIntro(),
-            employee.getImage()
-    )
-    employeeRepository.save();
+public void updateEmployee(Long Id,String name,Integer ege,Integer  sex,Integer adress1,String adress2,Integer hobby,String intro,Blob image){
+    Employee employee =employeeMapper.ToEntity(findEmployee(Id));
+
+    employee.setName(name);
+    employee.setEge(ege);
+    employee.setSex(sex);
+    employee.setAdress1(adress1);
+    employee.setAdress2(adress2);
+    employee.setHobby(hobby);
+    employee.setIntro(intro);
+    employee.setImage(image);
+
+    employeeRepository.save(employee);
 }
 
 
