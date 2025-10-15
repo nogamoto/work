@@ -18,14 +18,14 @@ import lombok.NoArgsConstructor;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long employee_Id;
+    private Long id;
     @Column(length = 10)
     private String name;
     private Integer ege;
     private Integer sex;
-    private Integer adress1;
+    private Integer address1;
     @Column(length = 255)
-    private String adress2;
+    private String address2;
     private Integer hobby;
     @Column(length = 255)
     private String intro;

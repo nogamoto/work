@@ -23,6 +23,7 @@ services:
         dockerfile: Dockerfile  # ビルドに使うDockerfileのパス
       ports:
         - "8081:8080"  # ホストの8081ポートをコンテナの8080ポートにマッピング
-
+      depends_on:
+          - db # DB起動後の接続を確実にするため追加
 volumes:
   db_data:

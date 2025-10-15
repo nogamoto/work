@@ -21,9 +21,9 @@ public class EmployeeDto {
     @Size(min = 0 , max = 1)
     private Integer sex;
     @Size(min = 1,max = 47)
-    private Integer adress1;
+    private Integer address1;
     @Size(max = 255)
-    private String adress2;
+    private String address2;
     private Integer hobby;
     @Size(max = 255)
     private String intro;

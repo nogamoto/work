@@ -8,7 +8,7 @@ import com.example.spring_boot_docker.model.Prefecture;
 @Mapper(componentModel = "spring")
 public interface PrefectrueMapper {
 
-    Prefecture  ToDto(PrefectureDto dto);
-    PrefectrueMapper ToEntity(Prefecture entity);
+    PrefectureDto  ToDto(Prefecture entity);
+    Prefecture ToEntity(PrefectureDto dto);
 
 }
