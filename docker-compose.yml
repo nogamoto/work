@@ -1,21 +1,20 @@
 services:
 
-#ローカル環境向け
-#    db:
-#      image: mysql:latest
-#      ports:
-#        - "3306:3306"
-#      volumes:
-#        - db_data:/var/lib/mysql
-#      restart: always
-#      environment:
-#        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/test_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-#        MYSQL_ROOT_PASSWORD: pass
-#        MYSQL_DATABASE: test_database
-#        MYSQL_USER: user
-#        MYSQL_PASSWORD: pass
-#volumes:
-#  db_data:
+    db:
+      image: mysql:latest
+      ports:
+        - "3306:3306"
+      volumes:
+        - db_data:/var/lib/mysql
+      restart: always
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/test_database?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+        MYSQL_ROOT_PASSWORD: pass
+        MYSQL_DATABASE: test_database
+        MYSQL_USER: user
+        MYSQL_PASSWORD: pass
+
+
 
     app:
       image: sb-app  # 使用するDockerイメージの名前
@@ -25,3 +24,5 @@ services:
       ports:
         - "8081:8080"  # ホストの8081ポートをコンテナの8080ポートにマッピング
 
+volumes:
+  db_data:

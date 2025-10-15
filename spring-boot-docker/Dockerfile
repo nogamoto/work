@@ -9,5 +9,7 @@
   COPY . .
   # JAR ファイルを作成（テストはスキップ）
   RUN mvn clean package -DskipTests
+  # ホットリロードを有効にする環境変数を設定
+  ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
   # アプリケーションの起動
-  CMD ["java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar"]
+  CMD ["java", "-jar", "target/spring-boot-docker-0.0.1-SNAPSHOT.jar", "--spring.devtools.restart.enabled=true"]
