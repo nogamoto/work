@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>自己紹介確認画面</title>
+</head>
+<body>
+    <h1>確認画面</h1>
+    <p>以下の内容で登録してよろしいですか？</p>
+    <form th:action="@{/confirm}" th:object="${employeeDto}" method="post" enctype="multipart/form-data">
+        <p>名前: <span th:text="*{name}"></span></p>
+        <p>年齢: <span th:text="*{ege}"></span></p>
+        <p>性別: <span th:text="*{sex == 0 ? '男性' : '女性'}"></span></p>
+        <p>住所1 (都道府県): <span th:text="${prefectures[*{prefecture_id}]}"></span></p>
+        <p>住所2 (詳細): <span th:text="*{address}"></span></p>
+        <p>趣味: <span th:text="*{hobby}"></span></p>
+        <p>自己紹介: <span th:text="*{intro}"></span></p>
+        <p>写真: <span th:text="*{imageFile.originalFilename}"></span></p>
+    </form>
+</body>
+</html>

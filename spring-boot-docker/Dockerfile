@@ -8,7 +8,7 @@
   # プロジェクトのソースコードをコピー
   COPY . .
   # JAR ファイルを作成（テストはスキップ）
-  RUN mvn clean package -DskipTests
+  RUN mvn clean package -DskipTests -e
   # ホットリロードを有効にする環境変数を設定
   ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
   # アプリケーションの起動

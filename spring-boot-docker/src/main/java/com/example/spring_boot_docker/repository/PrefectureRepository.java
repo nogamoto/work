@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.spring_boot_docker.model.Prefecture;
 
 @Repository
-public interface PrefectureRepository extends JpaRepository <Prefecture,Integer>{
+public interface PrefectureRepository extends JpaRepository<Prefecture, Integer> {
 
 }

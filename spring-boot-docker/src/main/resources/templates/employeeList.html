@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>従業員一覧</title>
+        <body>
+            <h1>従業員一覧</h1>
+            <table border="1">
+                <tr>
+                    <th>ID</th>
+                    <th>名前</th>
+                    <th>年齢</th>
+                </tr>
+                <tr th:each="employee : ${employeeList}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td th:text="${employee.age}"></td>
+                </tr>
+            </table>
+        </body>
+</html>
